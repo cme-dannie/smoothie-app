@@ -32,7 +32,7 @@ function shuffleAndRender() {
   functionality in NPM somewhere? :D:D:D */
 
   const shuffledIngredients = shuffle(ingredients);
-  const fiveIngredients = take(shuffledIngredients, 5);
+  const fiveIngredients = take(shuffledIngredients, 10);
 
   fiveIngredients.forEach((ingredient) => {
     const li = document.createElement("li");
