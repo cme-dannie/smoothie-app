@@ -1,28 +1,18 @@
 import { shuffle, take } from "lodash-es";
+import getRandomFruitsName from "random-fruits-name";
 
-/* This data would PROBABLY come from an external source */
-const ingredients = [
-  "Banana",
-  "Mango",
-  "Yogurt",
-  "Sorbet",
-  "Silken tofu",
-  "Nut butters",
-  "Avocado",
-  "Bananas",
-  "Pineapple",
-  "Strawberries",
-  "Blueberries",
-  "Raspberries",
-  "Blackberries",
-  "Cherries",
-  "Peaches",
-  "Cantaloupe",
-  "Watermelon",
-  "Pomegranate seeds",
-  "Kiwi",
-  "Acai berries",
-];
+// How do we avoid duplicates
+
+function getFiveRandomFruits() {
+  const fruits = [];
+
+  for (let i = 0; i < 5; i++) {
+    const name = getRandomFruitsName();
+    fruits.push(name);
+  }
+
+  return fruits;
+}
 
 const button = document.querySelector("button");
 const ul = document.querySelector("ul");
@@ -31,10 +21,13 @@ function shuffleAndRender() {
   /* How can we shuffle??? Maybe there is some awesome
   functionality in NPM somewhere? :D:D:D */
 
-  const shuffledIngredients = shuffle(ingredients);
-  const fiveIngredients = take(shuffledIngredients, 10);
+  const ingredients = getFiveRandomFruits();
 
-  fiveIngredients.forEach((ingredient) => {
+  // We don't need Lodash anymore, or?
+  // const shuffledIngredients = shuffle(ingredients);
+  // const fiveIngredients = take(shuffledIngredients, 10);
+
+  ingredients.forEach((ingredient) => {
     const li = document.createElement("li");
     li.textContent = ingredient;
     ul.append(li);
